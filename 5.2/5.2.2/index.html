@@ -18,12 +18,12 @@
 		while (!isNumber) {
 			number = prompt('Введите число');
 
-			if (number >= 0 || number < 0) {
+			if ((number >= 0 || number < 0) && number !== ' ') {
 				isNumber = true;
 			}
 		}
 
-		return number = (number === null || number === '') ? null : number;
+		return number = (number === null || number === '') ? null : +number;
 	}
 </script>
 </body>
