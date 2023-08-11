@@ -6,25 +6,29 @@
 </head>
 <body>
 ### 5.2.2
-Создайте функцию readNumber, которая будет запрашивать ввод числового значения до тех пор, пока посетитель его не введёт.
+Создайте функцию readNumber, которая будет запрашивать ввод числового значения до тех пор, пока посетитель его не
+введёт.
 Функция должна возвращать числовое значение.
 Также надо разрешить пользователю остановить процесс ввода, отправив пустую строку или нажав «Отмена». В этом случае
 функция должна вернуть null.
 <script>
 	function readNumber() {
-		let isNumber = false;
 		let number;
+		let isContinue = true;
 
-		while (!isNumber) {
+		while (isContinue) {
 			number = prompt('Введите число');
+			isContinue = !!number;
 
-			if ((number >= 0 || number < 0) && number !== ' ') {
-				isNumber = true;
+			if (typeof +number === 'number' && (number === '0' || +number > 0 || +number < 0)) {
+				isContinue = false;
 			}
 		}
 
-		return number = (number === null || number === '') ? null : +number;
+		return number ? +number : null;
 	}
+
+	console.log(readNumber())
 </script>
 </body>
 </html>
