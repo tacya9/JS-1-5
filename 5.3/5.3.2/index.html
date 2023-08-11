@@ -13,12 +13,10 @@ truncate("Вот, что мне хотелось бы сказать на эту
 truncate("Всем привет!", 20) ----> "Всем привет!"
 <script>
 	function truncate(str, maxlength) {
-		const  lengthStr = str.length;
-
 		let newStr = str;
 
-		if (lengthStr > maxlength) {
-			newStr = str.slice(0, maxlength + 1) + '…';
+		if (str.length > maxlength) {
+			newStr = str.slice(0, maxlength - 1) + '…';
 		}
 
 		return newStr;
