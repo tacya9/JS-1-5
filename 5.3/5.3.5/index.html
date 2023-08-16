@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 5.3.5
+Создать объект со следующей логикой:
+Запрашивает у пользователя любой текст: "Введите любой текст".
+А потом с помощью алерта выводит информацию об этом тексте (учитывай перенос строк в алерте), например:
+Введенный текст: "Абра ка табра";
+Всего символов: 13;
+Всего слов: 3.
+<script>
+	const infoObj = {
+		infoUserText() {
+			const userText = prompt('Введите любой текст');
+
+			let wordCount = 1;
+
+			for (let i of userText.trim()) {
+				if (i === ' ') {
+					wordCount += 1;
+				}
+			}
+
+			alert(`Введенный текст: "${userText}";\nВсего символов: ${userText.trim().length};\nВсего слов: ${wordCount}.`)
+		}
+	}
+</script>
+</body>
+</html>
