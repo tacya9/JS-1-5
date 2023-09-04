@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 5.3.6
+Создать объект со следующей логикой:
+Запрашивает у пользователя любой текст: "Введите текст".
+А потом выводит алерт с этим текстом, у которого в каждом слове первая буква - заглавная (большая).
+(Без использования массива)
+<script>
+	const userTextObj = {
+		userText: null,
+		newUserText: '',
+		init() {
+			this.getMessage();
+			this.getFirstBigSymbolWord();
+			this.showMessage();
+		},
+		getMessage() {
+			this.userText = prompt('Введите текст');
+		},
+		getFirstBigSymbolWord() {
+			let text = this.userText + ' ';
+
+			if (text.indexOf(' ') >= 0) {
+				while (text.indexOf(' ') >= 0) {
+					const word = text.slice(0, text.indexOf(' '));
+
+					this.newUserText += word[0].toUpperCase() + word.slice(1) + ' ';
+					text = text.slice(text.indexOf(' ') + 1);
+				}
+			}
+		},
+		showMessage() {
+			alert(this.newUserText);
+		}
+	}
+
+	userTextObj.init();
+</script>
+</body>
+</html>
