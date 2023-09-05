@@ -14,19 +14,34 @@
 Всего слов: 3.
 <script>
 	const infoObj = {
-		infoUserText() {
-			const userText = prompt('Введите любой текст');
-
-			let wordCount = 1;
-
-			for (let i of userText.trim()) {
-				if (i === ' ') {
-					wordCount += 1;
-				}
+		userText: '',
+		wordCount: 1,
+		characters: null,
+		finalMessage: '',
+		init() {
+			this.getMessage();
+			this.getNumberTextCharacters();
+			this.getWordCount();
+			this.formMessage();
+			this.showMessage();
+		},
+		getMessage() {
+			this.userText = prompt('Введите любой текст');
+		},
+		getNumberTextCharacters() {
+			this.characters = this.userText.trim().length;
+		},
+		getWordCount() {
+			for (let i of this.userText.trim()) {
+				this.wordCount += (i === ' ') ? 1 : 0;
 			}
-
-			alert(`Введенный текст: "${userText}";\nВсего символов: ${userText.trim().length};\nВсего слов: ${wordCount}.`)
-		}
+		},
+		formMessage() {
+			this.finalMessage = `Введенный текст: "${this.userText}";\nВсего символов: ${this.characters};\nВсего слов: ${this.wordCount}.`
+		},
+		showMessage() {
+			alert(this.finalMessage);
+		},
 	}
 </script>
 </body>
