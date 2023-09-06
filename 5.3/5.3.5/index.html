@@ -16,33 +16,35 @@
 	const infoObj = {
 		userText: '',
 		wordCount: 1,
-		characters: null,
+		characterQuantity: null,
 		finalMessage: '',
 		init() {
-			this.getMessage();
-			this.getNumberTextCharacters();
-			this.getWordCount();
-			this.formMessage();
-			this.showMessage();
+			this.askMessage();
+			this.calculateCharactersCount();
+			this.calculateWordCount();
+			this.formFinalMessage();
+			this.showFinalMessage();
 		},
-		getMessage() {
+		askMessage() {
 			this.userText = prompt('Введите любой текст');
 		},
-		getNumberTextCharacters() {
-			this.characters = this.userText.trim().length;
+		calculateCharactersCount() {
+			this.characterQuantity = this.userText.trim().length;
 		},
-		getWordCount() {
+		calculateWordCount() {
 			for (let i of this.userText.trim()) {
 				this.wordCount += (i === ' ') ? 1 : 0;
 			}
 		},
-		formMessage() {
-			this.finalMessage = `Введенный текст: "${this.userText}";\nВсего символов: ${this.characters};\nВсего слов: ${this.wordCount}.`
+		formFinalMessage() {
+			this.finalMessage = `Введенный текст: "${this.userText}";\nВсего символов: ${this.characterQuantity};\nВсего слов: ${this.wordCount}.`
 		},
-		showMessage() {
+		showFinalMessage() {
 			alert(this.finalMessage);
 		},
 	}
+
+	infoObj.init();
 </script>
 </body>
 </html>
