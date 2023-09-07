@@ -18,12 +18,13 @@ P.S. Ноль 0 – считается числом, не останавлива
 
 		let userNum;
 		let isNum = true;
-		let sumNumArr = 0;
+		let arrNumSum = 0;
 
 		while (isNum) {
 			userNum = prompt('Введите значение');
+			userNum = (userNum === null) ? null : userNum.trim();
 
-			if ((userNum >= 0 || userNum < 0) && userNum !== null && userNum !== ' ' && userNum !== '') {
+			if ((userNum >= 0 || userNum < 0) && userNum !== null && userNum !== '') {
 				numArr.push(userNum);
 			} else {
 				isNum = false;
@@ -31,13 +32,11 @@ P.S. Ноль 0 – считается числом, не останавлива
 		}
 
 		for (let i = 0; i < numArr.length; i++) {
-			sumNumArr += +numArr[i];
+			arrNumSum += +numArr[i];
 		}
 
-		return sumNumArr;
+		return arrNumSum;
 	}
-
-	console.log(sumInput())
 </script>
 </body>
 </html>
