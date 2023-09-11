@@ -52,23 +52,19 @@ create3Array(3, 'hi') создаст:
 					this.twoArray[i][j] = itemsValue;
 				}
 			}
-
-			return this.twoArray;
 		},
 		create3Array(itemsQty, itemsValue) {
 			for (let i = 0; i < itemsQty; i++) {
 				this.threeArray[i] = [];
 
-				for (let z = 0; z < itemsQty; z++) {
-					this.threeArray[i][z] = [];
+				for (let n = 0; n < itemsQty; n++) {
+					this.threeArray[i][n] = [];
 
 					for (let j = 0; j < itemsQty; j++) {
-						this.threeArray[i][z].push(itemsValue);
+						this.threeArray[i][n].push(itemsValue);
 					}
 				}
 			}
-
-			return this.threeArray;
 		}
 	}
 </script>
