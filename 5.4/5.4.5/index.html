@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 5.4.5
+Сделать объект с 3-мя методами:
+1) принимает массив и возвращает инфу о каждом айтеме в таком виде (максимум 3 типа):
+The item 0 is number: 534,
+The item 1 is text: "hello",
+The item 2 is boolean: true.
+
+Важно: описание каждого айтема должно быть в отдельной строке (мы это проверим с помощью alert) и в описании
+последнего айтема в конце должна стоять точка.
+
+2) принимает 2 значения (значение айтема и его номер в массиве) и возвращает текст в таком виде:
+The item 0 is a number: 534
+
+3) принимает 1 значение (значение айтема) и вовзращает название типа: number, text или boolean.
+И конечно же, 2 и 3 метод должен быть использован в 1 методе, чтобы получить необходимый результат.
+<script>
+	const infoObj = {
+		textInfo: '',
+		getItemType(value) {
+			let itemType;
+
+			switch (typeof value) {
+				case 'boolean':
+					itemType = 'boolean';
+					break;
+				case 'number':
+					itemType = 'number';
+					break;
+				case 'string':
+					itemType = 'text';
+					break;
+			}
+
+			return itemType;
+		},
+		showMessage(value, index) {
+			if (typeof value === 'string') {
+				this.textInfo += `The item ${index} is a ${this.getItemType(value)}: "${value}",\n`;
+			} else {
+				this.textInfo += `The item ${index} is a ${this.getItemType(value)}: ${value},\n`;
+			}
+		},
+		showFinalMessage(arr) {
+			for (let i = 0; i < arr.length; i++) {
+				this.showMessage(arr[i], i);
+			}
+
+			this.textInfo = this.textInfo.slice(0, -2) + '.';
+
+			return this.textInfo;
+		}
+	}
+</script>
+</body>
+</html>
