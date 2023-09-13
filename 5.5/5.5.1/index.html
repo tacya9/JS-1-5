@@ -18,14 +18,11 @@ P.S. Подсказка: используйте split, чтобы разбить
 <script>
 	function camelize(str) {
 		const stringArr = str.split('-');
-
-		let newStr;
-
 		const newStringArr = stringArr.map(function (item, index) {
-			return (item === '' || index === 0) ? item : item[0].toUpperCase() + item.slice(1);
+			return (index === 0) ? item : item[0].toUpperCase() + item.slice(1);
 		})
 
-		newStr = newStringArr.join('');
+		let newStr = newStringArr.join('');
 
 		return newStr;
 	}
