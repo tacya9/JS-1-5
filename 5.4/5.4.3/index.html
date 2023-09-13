@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 5.4.3
+1)
+Сделать обьект, у которого будет свойство twoArray и метод create2Array. У метода будет два параметра:
+количество айтемов в массиве (внешний и внутренний) и значение айтемов.
+Метод создает двумерный массив и присваивает его свойству twoArray текущего обьекта.
+Сделать без использования метода push.
+create2Array(3, 'hi') создаст:
+[
+['hi', 'hi', 'hi'],
+['hi', 'hi', 'hi'],
+['hi', 'hi', 'hi']
+]
+
+2) К обьекту добавить свойство threeArray и метод create3Array.
+У метода будет два параметра: количество айтемов в массиве и значение айтемов.
+Метод создает трехмерный массив и присваивает его свойству threeArray текущего обьекта.
+Сделать с использованием метода push.
+create3Array(3, 'hi') создаст:
+[
+[
+['hi', 'hi', 'hi'],
+['hi', 'hi', 'hi'],
+['hi', 'hi', 'hi']
+],
+[
+['hi', 'hi', 'hi'],
+['hi', 'hi', 'hi'],
+['hi', 'hi', 'hi']
+],
+[
+['hi', 'hi', 'hi'],
+['hi', 'hi', 'hi'],
+['hi', 'hi', 'hi']
+]
+]
+<script>
+	const obj = {
+		twoArray: [],
+		threeArray: [],
+		create2Array(itemsQty, itemsValue) {
+			for (let i = 0; i < itemsQty; i++) {
+				this.twoArray[i] = [];
+
+				for (let j = 0; j < itemsQty; j++) {
+					this.twoArray[i][j] = itemsValue;
+				}
+			}
+		},
+		create3Array(itemsQty, itemsValue) {
+			for (let i = 0; i < itemsQty; i++) {
+				this.threeArray[i] = [];
+
+				for (let n = 0; n < itemsQty; n++) {
+					this.threeArray[i][n] = [];
+
+					for (let j = 0; j < itemsQty; j++) {
+						this.threeArray[i][n].push(itemsValue);
+					}
+				}
+			}
+		}
+	}
+</script>
+</body>
+</html>
