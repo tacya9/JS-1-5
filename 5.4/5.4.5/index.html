@@ -22,7 +22,6 @@ The item 0 is a number: 534
 И конечно же, 2 и 3 метод должен быть использован в 1 методе, чтобы получить необходимый результат.
 <script>
 	const infoObj = {
-		textInfo: '',
 		getItemType(value) {
 			let itemType;
 
@@ -40,21 +39,21 @@ The item 0 is a number: 534
 
 			return itemType;
 		},
-		showMessage(value, index) {
-			if (typeof value === 'string') {
-				this.textInfo += `The item ${index} is a ${this.getItemType(value)}: "${value}",\n`;
-			} else {
-				this.textInfo += `The item ${index} is a ${this.getItemType(value)}: ${value},\n`;
-			}
+		getMessage(value, index) {
+			const text = (typeof value === 'string') ? `"${value}"` : value;
+
+			return `The item ${index} is a ${this.getItemType(value)}: ${text},\n`;
 		},
 		showFinalMessage(arr) {
+			let text = '';
+
 			for (let i = 0; i < arr.length; i++) {
-				this.showMessage(arr[i], i);
+				text += this.getMessage(arr[i], i);
 			}
 
-			this.textInfo = this.textInfo.slice(0, -2) + '.';
+			text = text.slice(0, -2) + '.';
 
-			return this.textInfo;
+			return text;
 		}
 	}
 </script>
