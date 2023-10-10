@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 5.5.14
+Сделать объект с необходимыми методами. Главному методу будет передаваться массив с объектами, а он будет
+возвращать новый массив с отсортированными по убыванию объектами. Сортировать по свойству year.
+Добавь здесь еще один метод, который вернет строку имён разделенные запятыми, причем все латинские
+буквы должны быть заменены на русские, например "Tania" должна стать "Таниа"
+Массив с объектами:
+[
+{name: "Tania", year: 1985},
+{name: "Vlad", year: 1981},
+{name: "Danik", year: 2013},
+{name: "Artem", year: 2017}
+]
+должен отсортироваться в такой вид:
+[
+{name: "Artem", year: 2017},
+{name: "Danik", year: 2013},
+{name: "Tania", year: 1985},
+{name: "Vlad", year: 1981}
+]
+<script>
+	const usersInfo = {
+		init: function () {
+			const newUsersInfo = {};
+
+			newUsersInfo.sortedArray = this.sortByAge(arr);
+			newUsersInfo.namesString = this.getNewNamesString(arr);
+
+			return newUsersInfo;
+		},
+		sortByAge: function (users) {
+			function compare(a, b) {
+				if (a.year > b.year) return -1;
+			}
+
+			return users.sort(compare);
+		},
+		isBigLetter: function (letter) {
+			return (letter !== letter.toLowerCase());
+		},
+		getNewArr: function (arr) {
+			const newArr = arr.map(function (item) {
+				return item.name;
+			})
+			return newArr;
+		},
+		getNewNamesString: function (arr) {
+			const self = this;
+			const newArr1 = this.getNewArr(arr).map(function (item) {
+				let newWord = '';
+
+				for (let i = 0; i < item.length; i++) {
+					switch (item[i].toLowerCase()) {
+						case 't':
+							newWord += 'т';
+							break;
+						case 'a':
+							newWord += 'а';
+							break;
+						case 'n':
+							newWord += 'н';
+							break;
+						case 'i':
+							newWord += 'и';
+							break;
+						case 'v':
+							newWord += 'в';
+							break;
+						case 'l':
+							newWord += 'л';
+							break;
+						case 'd':
+							newWord += 'д';
+							break;
+						case 'k':
+							newWord += 'к';
+							break;
+						case 'r':
+							newWord += 'р';
+							break;
+						case 'e':
+							newWord += 'е';
+							break;
+						case 'm':
+							newWord += 'м';
+							break;
+					}
+
+					if (self.isBigLetter(item[i])) {
+						newWord = newWord.toUpperCase();
+					}
+				}
+
+				return newWord;
+			})
+
+			return newArr1.join(', ');
+		}
+	}
+
+	const arr = [
+		{name: "Tania", year: 1985},
+		{name: "Vlad", year: 1981},
+		{name: "Danik", year: 2013},
+		{name: "Artem", year: 2017}
+	]
+
+	console.log(usersInfo.init(arr));
+</script>
+</body>
+</html>
