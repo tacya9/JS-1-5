@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 5.11.1
+Напишите функцию formatDate(date), которая выводит дату date в формате дд.мм.гг:
+Например:
+const customDate = new Date(2014, 0, 30); // 30 января 2014
+alert( formatDate(customDate) ); // '30.01.14'
+
+P.S. Обратите внимание, ведущие нули должны присутствовать, то есть 1 января 2001 должно быть 01.01.01, а не 1.1.1.
+<script>
+	function formatDate(date) {
+		const newDate = new Date(date);
+
+		let stringData = (newDate.getDate() > 10) ? newDate.getDate() + '.' : '0' + newDate.getDate() + '.';
+
+		stringData += (newDate.getMonth() > 8) ? newDate.getMonth() + 1 + '.' : '0' + (newDate.getMonth() + 1) + '.';
+
+		stringData += String(newDate.getFullYear()).slice(-2);
+
+		return stringData;
+	}
+
+	const customDate = new Date(2014, 0, 30);
+
+	alert( formatDate(customDate) )
+</script>
+</body>
+</html>
