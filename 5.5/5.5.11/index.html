@@ -28,13 +28,9 @@
 
 			return newText;
 		},
-		getNewArr(text) {
-			return text.split(' ');
-		},
 		getSortAscending(text) {
-			const wordsArr = this.getNewArr(text);
-
-			function compare(a, b) {
+			const wordsArr = text.split(' ');
+			const compare = function (a, b) {
 				if (a.length < b.length) return -1;
 			}
 
@@ -55,8 +51,7 @@
 		},
 		getInfo(text) {
 			const self = this;
-			const wordsArr = this.getNewArr(text);
-
+			const wordsArr = text.split(' ');
 			const newWordsArr = wordsArr.map(function (word) {
 				return self.getFirstAndLastCapitalLetters(word);
 			});
