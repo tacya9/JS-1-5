@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 5.11.2
+Сделать объект с необходимыми методами.
+Главный метод этого объекта принимает число (количество секунд, которое прошло после 2000 года)
+и возвращает строку даты в формате: "2002г. сентябрь 07"
+<script>
+	const dateInfo = {
+		getDateString: function (seconds) {
+			const date = new Date(2000, 0, 1);
+			const newDateMilliseconds = date.getTime() + (seconds * 1000);
+			const newDate = new Date(newDateMilliseconds);
+
+			let newDateInfo = newDate.getFullYear() + 'г. ';
+
+			switch (newDate.getMonth()) {
+				case 0:
+					newDateInfo += 'январь ';
+					break;
+				case 1:
+					newDateInfo += 'февраль ';
+					break;
+				case 2:
+					newDateInfo += 'март ';
+					break;
+				case 3:
+					newDateInfo += 'апрель ';
+					break;
+				case 4:
+					newDateInfo += 'май ';
+					break;
+				case 5:
+					newDateInfo += 'июнь ';
+					break;
+				case 6:
+					newDateInfo += 'июль ';
+					break;
+				case 7:
+					newDateInfo += 'август ';
+					break;
+				case 8:
+					newDateInfo += 'сентябрь ';
+					break;
+				case 9:
+					newDateInfo += 'октябрь ';
+					break;
+				case 10:
+					newDateInfo += 'ноябрь ';
+					break;
+				case 11:
+					newDateInfo += 'декабрь ';
+					break;
+			}
+
+			newDateInfo += (newDate.getDate() < 10) ? '0' + newDate.getDate() : newDate.getDate();
+
+			return newDateInfo;
+		}
+	}
+</script>
+</body>
+</html>
