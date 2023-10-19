@@ -11,55 +11,63 @@
 и возвращает строку даты в формате: "2002г. сентябрь 07"
 <script>
 	const dateInfo = {
-		getDateString: function (seconds) {
+		getDateText: function (seconds) {
 			const date = new Date(2000, 0, 1);
-			const newDateMilliseconds = date.getTime() + (seconds * 1000);
-			const newDate = new Date(newDateMilliseconds);
+			const newMilliseconds = date.getTime() + seconds * 1000;
+			const newDate = new Date(newMilliseconds);
+			const year = newDate.getFullYear() + 'г. ';
 
-			let newDateInfo = newDate.getFullYear() + 'г. ';
+			let newDateInfo;
+			let day = newDate.getDate();
 
-			switch (newDate.getMonth()) {
+			day = (day < 10) ? '0' + day : day;
+			newDateInfo = year + this.getMonth(newDate) + day;
+
+			return newDateInfo;
+		},
+		getMonth: function (date) {
+			let month;
+
+			switch (date.getMonth()) {
 				case 0:
-					newDateInfo += 'январь ';
+					month = 'январь ';
 					break;
 				case 1:
-					newDateInfo += 'февраль ';
+					month = 'февраль ';
 					break;
 				case 2:
-					newDateInfo += 'март ';
+					month = 'март ';
 					break;
 				case 3:
-					newDateInfo += 'апрель ';
+					month = 'апрель ';
 					break;
 				case 4:
-					newDateInfo += 'май ';
+					month = 'май ';
 					break;
 				case 5:
-					newDateInfo += 'июнь ';
+					month = 'июнь ';
 					break;
 				case 6:
-					newDateInfo += 'июль ';
+					month = 'июль ';
 					break;
 				case 7:
-					newDateInfo += 'август ';
+					month = 'август ';
 					break;
 				case 8:
-					newDateInfo += 'сентябрь ';
+					month = 'сентябрь ';
 					break;
 				case 9:
-					newDateInfo += 'октябрь ';
+					month = 'октябрь ';
 					break;
 				case 10:
-					newDateInfo += 'ноябрь ';
+					month = 'ноябрь ';
 					break;
 				case 11:
-					newDateInfo += 'декабрь ';
+					month = 'декабрь ';
 					break;
 			}
 
-			newDateInfo += (newDate.getDate() < 10) ? '0' + newDate.getDate() : newDate.getDate();
-
-			return newDateInfo;
+			return month;
 		}
 	}
 </script>
