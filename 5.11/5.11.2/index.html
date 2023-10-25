@@ -15,20 +15,20 @@
 			const date = new Date(2000, 0, 1);
 			const newMilliseconds = date.getTime() + seconds * 1000;
 			const newDate = new Date(newMilliseconds);
-			const year = newDate.getFullYear() + 'г. ';
+			const year = newDate.getFullYear();
+			const monthNumber = date.getMonth();
+			const month = this.getMonth(monthNumber);
 
-			let newDateInfo;
 			let day = newDate.getDate();
 
 			day = (day < 10) ? '0' + day : day;
-			newDateInfo = year + this.getMonth(newDate) + day;
 
-			return newDateInfo;
+			return `${year}г. ${month} ${day}`;
 		},
-		getMonth: function (date) {
+		getMonth: function (monthNumber) {
 			let month;
 
-			switch (date.getMonth()) {
+			switch (monthNumber) {
 				case 0:
 					month = 'январь ';
 					break;
