@@ -18,13 +18,11 @@ P.S. Обратите внимание, ведущие нули должны п�
 
 		let day = date.getDate();
 		let month = date.getMonth();
-		let stringData;
 
-		day = (day > 10) ? day + '.' : '0' + day + '.';
-		month = (month > 8) ? month + 1 + '.' : '0' + (month + 1) + '.';
-		stringData = day + month + year;
+		day = (day > 10) ? day : '0' + day;
+		month = (month > 8) ? month + 1 : '0' + (month + 1);
 
-		return stringData;
+		return `${day}.${month}.${year}`;
 	}
 
 	const customDate = new Date(2014, 0, 30);
