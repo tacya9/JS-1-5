@@ -17,10 +17,10 @@ P.S. Обратите внимание, ведущие нули должны п�
 		const year = String(date.getFullYear()).slice(-2);
 
 		let day = date.getDate();
-		let month = date.getMonth();
+		let month = date.getMonth() + 1;
 
 		day = (day > 10) ? day : '0' + day;
-		month = (month > 8) ? month + 1 : '0' + (month + 1);
+		month = (month > 8) ? month : '0' + month;
 
 		return `${day}.${month}.${year}`;
 	}
