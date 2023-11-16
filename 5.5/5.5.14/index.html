@@ -27,14 +27,12 @@
 <script>
 	const usersInfo = {
 		init: function () {
-			const newUsersInfo = {};
-
-			newUsersInfo.sortedArray = this.sortByAge(arr);
-			newUsersInfo.namesString = this.getNewNamesString(arr);
-
-			return newUsersInfo;
+			return {
+				sortedArray: this.getSortedUsers(arr),
+				namesString: this.getNewNamesString(arr)
+			}
 		},
-		sortByAge: function (users) {
+		getSortedUsers: function (users) {
 			function compare(a, b) {
 				if (a.year > b.year) return -1;
 			}
@@ -44,63 +42,64 @@
 		isBigLetter: function (letter) {
 			return (letter !== letter.toLowerCase());
 		},
-		getNewArr: function (arr) {
-			const newArr = arr.map(function (item) {
-				return item.name;
+		getNames: function (users) {
+			const names = users.map(function (user) {
+				return user.name;
 			})
-			return newArr;
-		},
-		getNewNamesString: function (arr) {
-			const self = this;
-			const newArr1 = this.getNewArr(arr).map(function (item) {
-				let newWord = '';
 
-				for (let i = 0; i < item.length; i++) {
-					switch (item[i].toLowerCase()) {
+			return names;
+		},
+		getNewNamesString: function (users) {
+			const self = this;
+			const russianNames = this.getNames(users).map(function (name) {
+				let russianName = '';
+
+				for (let i = 0; i < name.length; i++) {
+					switch (name[i].toLowerCase()) {
 						case 't':
-							newWord += 'т';
+							russianName += 'т';
 							break;
 						case 'a':
-							newWord += 'а';
+							russianName += 'а';
 							break;
 						case 'n':
-							newWord += 'н';
+							russianName += 'н';
 							break;
 						case 'i':
-							newWord += 'и';
+							russianName += 'и';
 							break;
 						case 'v':
-							newWord += 'в';
+							russianName += 'в';
 							break;
 						case 'l':
-							newWord += 'л';
+							russianName += 'л';
 							break;
 						case 'd':
-							newWord += 'д';
+							russianName += 'д';
 							break;
 						case 'k':
-							newWord += 'к';
+							russianName += 'к';
 							break;
 						case 'r':
-							newWord += 'р';
+							russianName += 'р';
 							break;
 						case 'e':
-							newWord += 'е';
+							russianName += 'е';
 							break;
 						case 'm':
-							newWord += 'м';
+							russianName += 'м';
 							break;
 					}
 
-					if (self.isBigLetter(item[i])) {
-						newWord = newWord.toUpperCase();
+					if (self.isBigLetter(name[i])) {
+						russianName = russianName.toUpperCase();
 					}
 				}
 
-				return newWord;
+				return russianName;
 			})
 
-			return newArr1.join(', ');
+			return russianNames.join(', ');
 		}
 	}
 
