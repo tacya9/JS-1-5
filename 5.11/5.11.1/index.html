@@ -19,13 +19,13 @@ P.S. Обратите внимание, ведущие нули должны п�
 		let day = date.getDate();
 		let month = date.getMonth() + 1;
 
-		day = (day > 10) ? day : '0' + day;
-		month = (month > 8) ? month : '0' + month;
+		day = (day > 9) ? day : '0' + day;
+		month = (month > 9) ? month : '0' + month;
 
 		return `${day}.${month}.${year}`;
 	}
 
-	const customDate = new Date(2014, 0, 30);
+	const customDate = new Date(2014, 10, 10);
 
 	alert(formatDate(customDate))
 </script>
