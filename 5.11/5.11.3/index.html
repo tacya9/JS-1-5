@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 5.11.3
+Создать объект, главный метод которого принимает любую функцию, запускает ее и потом возвращает время выполнения
+этой функции (количество милисекунд, за которое эта функция полностью выполнилась). Все вспомогательные переменные
+сделать свойствами этого объекта.
+Необходимо узнать сколько времени занимает выполнение этой функции:
+function fn() {
+for (let i = 0; i < 10000000; i++) {
+let random = Math.random();
+}
+}
+
+В итоге должно получится примерно так:
+checkTime.init(fn); // 188
+
+После выполнения этого задания, добавь в этот объект еще один метод, который будет принимать любое число
+(количество секунд) и возвращать текст, который скажет сколько это секунд, минут, часов, дней, месяцев,
+лет (нулевые значения не отображать), например:
+4472 - это получится "1час. 14мин. 32сек."
+<script>
+	const checkTime = {
+		startTime: null,
+		endTime: null,
+		getLeadTime: function (func) {
+			this.startTime = Date.now();
+
+			func();
+
+			this.endTime = Date.now();
+
+			return this.endTime - this.startTime;
+		},
+		getDateInfo: function (seconds) {
+			const secInMin = 60;
+			const secInHour = secInMin * 60;
+			const secInDay = secInHour * 24;
+			const secInMonth = secInDay * 30;
+			const secInYear = secInMonth * 12;
+			const getInfo = function (sec, unit, period) {
+				period = Math.floor(remainderInSeconds / sec);
+
+				remainderInSeconds = remainderInSeconds - period * sec;
+
+				return (period > 0) ? period + unit : '';
+			}
+
+			let year;
+			let month;
+			let days;
+			let hours;
+			let minutes;
+			let info = '';
+			let remainderInSeconds = seconds;
+
+			info += getInfo(secInYear, 'г. ', year);
+			info += getInfo(secInMonth, 'мес. ', month);
+			info += getInfo(secInDay, 'дн. ', days);
+			info += getInfo(secInHour, 'ч. ', hours);
+			info += getInfo(secInMin, 'мин. ', minutes);
+
+			info += (remainderInSeconds > 0) ? `${remainderInSeconds}сек.` : '';
+
+			return info.trim();
+		}
+	}
+
+	function fn() {
+		for (let i = 0; i < 10000000; i++) {
+			let random = Math.random();
+		}
+	}
+
+	console.log(checkTime.getLeadTime(fn));
+	console.log(checkTime.getDateInfo(44720040));
+</script>
+</body>
+</html>
