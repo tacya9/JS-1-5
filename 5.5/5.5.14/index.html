@@ -29,7 +29,7 @@
 		init: function () {
 			return {
 				sortedArray: this.getSortedUsers(arr),
-				namesString: this.getNamesString(arr)
+				namesString: this.getRussianNamesText(arr)
 			}
 		},
 		getSortedUsers: function (users) {
@@ -49,7 +49,7 @@
 
 			return names;
 		},
-		getNamesString: function (users) {
+		getRussianNamesText: function (users) {
 			const self = this;
 			const russianNames = this.getNames(users).map(function (name) {
 				let russianName = '';
