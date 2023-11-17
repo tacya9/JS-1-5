@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 5.5.14
+Сделать объект с необходимыми методами. Главному методу будет передаваться массив с объектами, а он будет
+возвращать новый массив с отсортированными по убыванию объектами. Сортировать по свойству year.
+Добавь здесь еще один метод, который вернет строку имён разделенные запятыми, причем все латинские
+буквы должны быть заменены на русские, например "Tania" должна стать "Таниа"
+Массив с объектами:
+[
+{name: "Tania", year: 1985},
+{name: "Vlad", year: 1981},
+{name: "Danik", year: 2013},
+{name: "Artem", year: 2017}
+]
+должен отсортироваться в такой вид:
+[
+{name: "Artem", year: 2017},
+{name: "Danik", year: 2013},
+{name: "Tania", year: 1985},
+{name: "Vlad", year: 1981}
+]
+<script>
+	const usersInfo = {
+		init: function () {
+			return {
+				sortedArray: this.getSortedUsers(arr),
+				namesString: this.getRussianNamesText(arr)
+			}
+		},
+		getSortedUsers: function (users) {
+			function compare(a, b) {
+				if (a.year > b.year) return -1;
+			}
+
+			return users.sort(compare);
+		},
+		isBigLetter: function (letter) {
+			return (letter !== letter.toLowerCase());
+		},
+		getNames: function (users) {
+			const names = users.map(function (user) {
+				return user.name;
+			})
+
+			return names;
+		},
+		getRussianNamesText: function (users) {
+			const self = this;
+			const russianNames = this.getNames(users).map(function (name) {
+				let russianName = '';
+
+				for (let i = 0; i < name.length; i++) {
+					switch (name[i].toLowerCase()) {
+						case 't':
+							russianName += 'т';
+							break;
+						case 'a':
+							russianName += 'а';
+							break;
+						case 'n':
+							russianName += 'н';
+							break;
+						case 'i':
+							russianName += 'и';
+							break;
+						case 'v':
+							russianName += 'в';
+							break;
+						case 'l':
+							russianName += 'л';
+							break;
+						case 'd':
+							russianName += 'д';
+							break;
+						case 'k':
+							russianName += 'к';
+							break;
+						case 'r':
+							russianName += 'р';
+							break;
+						case 'e':
+							russianName += 'е';
+							break;
+						case 'm':
+							russianName += 'м';
+							break;
+					}
+
+					if (self.isBigLetter(name[i])) {
+						russianName = russianName.toUpperCase();
+					}
+				}
+
+				return russianName;
+			})
+
+			return russianNames.join(', ');
+		}
+	}
+
+	const arr = [
+		{name: "Tania", year: 1985},
+		{name: "Vlad", year: 1981},
+		{name: "Danik", year: 2013},
+		{name: "Artem", year: 2017}
+	]
+
+	console.log(usersInfo.init(arr));
+</script>
+</body>
+</html>
