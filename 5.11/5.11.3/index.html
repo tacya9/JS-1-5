@@ -66,7 +66,7 @@ checkTime.init(fn); // 188
 
 			info += (remainderInSeconds > 0) ? `${remainderInSeconds}сек.` : '';
 
-			return info;
+			return info.trim();
 		}
 	}
 
@@ -77,7 +77,7 @@ checkTime.init(fn); // 188
 	}
 
 	console.log(checkTime.getLeadTime(fn));
-	console.log(checkTime.getDateInfo(4472));
+	console.log(checkTime.getDateInfo(44720040));
 </script>
 </body>
 </html>
