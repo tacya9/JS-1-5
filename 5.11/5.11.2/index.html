@@ -16,7 +16,7 @@
 			const newMilliseconds = date.getTime() + seconds * 1000;
 			const newDate = new Date(newMilliseconds);
 			const year = newDate.getFullYear();
-			const monthNumber = date.getMonth();
+			const monthNumber = newDate.getMonth();
 			const month = this.getMonth(monthNumber);
 
 			let day = newDate.getDate();
@@ -30,46 +30,48 @@
 
 			switch (monthNumber) {
 				case 0:
-					month = 'январь ';
+					month = 'январь';
 					break;
 				case 1:
-					month = 'февраль ';
+					month = 'февраль';
 					break;
 				case 2:
-					month = 'март ';
+					month = 'март';
 					break;
 				case 3:
-					month = 'апрель ';
+					month = 'апрель';
 					break;
 				case 4:
-					month = 'май ';
+					month = 'май';
 					break;
 				case 5:
-					month = 'июнь ';
+					month = 'июнь';
 					break;
 				case 6:
-					month = 'июль ';
+					month = 'июль';
 					break;
 				case 7:
-					month = 'август ';
+					month = 'август';
 					break;
 				case 8:
-					month = 'сентябрь ';
+					month = 'сентябрь';
 					break;
 				case 9:
-					month = 'октябрь ';
+					month = 'октябрь';
 					break;
 				case 10:
-					month = 'ноябрь ';
+					month = 'ноябрь';
 					break;
 				case 11:
-					month = 'декабрь ';
+					month = 'декабрь';
 					break;
 			}
 
 			return month;
 		}
 	}
+
+	console.log(dateInfo.getDateText(255556025))
 </script>
 </body>
 </html>
